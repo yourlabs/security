@@ -124,7 +124,7 @@ Une fois pret on utilise un petit server http pour que la victime puisse telecha
 Note:
 - Conclusion: ne ramassez pas les clefs usb que vous trouvez dans la rue
 
----?video=https://yourlabs.io/oss/security/raw/master/assets/ducky-windoz.mp4
+---?video=https://yourlabs.io/oss/security/raw/master/assets/msf-reverseshell.mp4
 ---
 
 ## Usages
