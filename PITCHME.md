@@ -1,19 +1,82 @@
-# Le RubberDucky
+## Attaques informatique
 
-![img](img/ducky.jpg)
+### YourLabs Business Service
+### SecOps team
 
-Il ressemble a une clée usb mais emulle un clavier
-Il peut tapper plus de 1000 mots a la miinute
+---
+
+## RubberDucky
+
+---?image=assets/mrrobot.jpg&size=contain
+
+Note:
+- vu dans Mr. Robot
+- Elliot Alderson est un jeune informaticien vivant à New York, qui travaille en tant que technicien en sécurité informatique pour Allsafe Security. Celui-ci luttant constamment contre un trouble dissociatif de l'identité et de dépression, son processus de pensée semble fortement influencé par la paranoïa et l'illusion. Il pirate les comptes des gens, ce qui le conduit souvent à agir comme un cyber-justicier. Elliot rencontre « Mr. Robot », un mystérieux anarchiste qui souhaite le recruter dans son groupe de hackers connu sous le nom de « Fsociety ». Leur objectif consiste à rétablir l'équilibre de la société par la destruction des infrastructures des plus grosses banques et entreprises du monde, notamment le conglomérat E Corp. (surnommé « Evil Corp. » par Elliot) qui, comme client, par ailleurs, représente 80 % du chiffre d’affaires d’Allsafe Security.
+
+---
+
+## Fonctionnement
+
+- clef usb d'apparence anodine |
+- en fait un clavier scripté |
+- 1000+ mots par minute |
+- marche très bien sur tout OS bien à jour |
+
+---?image=assets/ducky.jpg&size=contain
+
+Note:
+- une clef usb
+- une carte memoire pour scripter la clef usb
+- un etuit pour une illusion parfaite
+
+---?image=assets/duckyclosed.png&size=contain
+
+Note: le logo n'est pas present sur la version de production
+
+---
+
+## Exemples d'objectifs
+
+- desactiver les antivirus |
+- configurer un proxy |
+- modifier d'autres paramêtres |
+- démarrer un reverse shell |
+- insertion de certificat d'autorité |
+- démarrer des scripts powershell |
+- tels que des ransomwares |
+
+---?code=cmc/payload/meterpreter.txt&title=Exemple de script RubberDucky
+
+@[1](Attendre 700 millisecondes)
+@[2](Tappez Echap)
+@[3](Attendre 100 millisecondes)
+@[4](Ouvrir le menu démarrer)
+@[6](Tapper "Windows Security")
+@[8](Tapper Enter pour ouvrir la fenêtre de sécurité Windows)
+@[10](Tapper Enter pour ouvrir "Protection")
+@[11-18](Faire TAB 4 fois)
+@[20](Tapper Enter pour ouvrir les paramêtres de protection)
+@[22](Passe la protection de "Activée" à "Desactivée")
+@[24](Passe de "Non" à "Oui" dans la confirmation)
+@[26](Valide)
+@[75](Ouvre l'executeur de commande)
+@[77](Tapper la commande qui telecharge notre reverse shell)
+@[83](Tapper la commande qui execute le reverse shell)
+@[86-94](Efface les notifications pour ne pas laisser de trace)
+
+---
+
+# Demo
 
 ---
 
 Voici a quoi ressemble du code pour le rubber ducky;
 
-![img](img/duckscript.jpg)
+![img](assets/duckscript.jpg)
 
 Il faut ensuite le compiler pour le mettre dans la clée usb:
 
-![img](img/comp.png)
+![img](assets/comp.png)
 
 ---
 
@@ -22,7 +85,7 @@ Il faut ensuite le compiler pour le mettre dans la clée usb:
 Pour desactiver windows defender une combinaison de touche suffit.
 En revanche pour obtenir un reverse shell, il faut preparer unpeu ..
 
-![img](img/ex.jpg)
+![img](assets/ex.jpg)
 
 #### Creations de l'executable et setup du server meterpreter
 
@@ -30,7 +93,7 @@ On utilise Msfvenom pour creer le payoad et Metasploit pour le server Meterprete
 
 ##### Meterpreter:
 
-![img](img/msfv.png)
+![img](assets/msfv.png)
 
 ```
 -a: l'architecture
@@ -45,7 +108,7 @@ LPORT: le port du server meterpreter
 
 ##### Metasploit
 
-![img](img/msf.png)
+![img](assets/msf.png)
 
 ---
 
@@ -68,7 +131,7 @@ Apres 20 seconde voila ce que ce passe sur le server meterpreter:
 
 on a un reverse shell :)
 
-![img](img/revshell.png)
+![img](assets/revshell.png)
 
 ---
 
@@ -135,7 +198,7 @@ $ python firefox_decrypt.py
 
 Et voici le resultat :)
 
-![img](img/password.png)
+![img](assets/password.png)
 
 ---
 
@@ -404,7 +467,7 @@ mitmproxy
 
 On plug la clée usb et apres 20 seconde, voila le resultat
 
-![img](img/mitm.png)
+![img](assets/mitm.png)
 
 Les communications se font toujours en https, mais nous sommes maintenant capable de les voire en claires  :)
 
