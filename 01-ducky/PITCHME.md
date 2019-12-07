@@ -5,8 +5,6 @@
 
 ---
 
-# Loi Godfrain
-
 Les dispositions de la loi Godfrain sont intégrées dans le Code pénal, livre III (« Des crimes et délits contre les biens »), titre II (« Des autres atteintes aux biens »), chap. III : « Des atteintes aux systèmes de traitement automatisé de données ». Selon les infractions retenues, les peines peuvent aller de 2 ans de prison et 30 000 euros d'amende à 10 ans d'emprisonnement et 150 000 euros d'amende (pour l'une quelconque de ces infractions commise en « bande organisée » à l'encontre d'un STAD de l'État). Par ailleurs, ces peines peuvent être accompagnées de privation de droits civiques et d'autres mesures (interdiction de travailler dans la fonction publique, exclusion des marchés publics, etc.).
 
 Note:
