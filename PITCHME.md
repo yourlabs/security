@@ -1,10 +1,10 @@
 ## Sécurité Offensive
 
-Par YourLabs Business Service
-
 1. [Injection Physique](?p=01-ducky)
 1. [Ransomware](?p=02-ransomware)
 1. [Man In The Middle](?p=03-mitm)
+
+Source: [yourlabs.io/oss/security](https://yourlabs.io/oss/security)
 
 ---
 
