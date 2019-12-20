@@ -2,19 +2,19 @@
 
 Open pdf in vim for inspect them...
 
-## [1] claw_powershell.pdf 
+## [1] claw_powershell.pdf
 
 Run powershell command.. A warning will be prompt to the user.<br>
 ![warning msg](pdf/warning_psh.png)<br>
 But if we scroll up, we can see:<br>
 ![warning2](pdf/warning_psh_cmd.png)
-We use: 
+We use:
 - `Action/S/Launch/Win` for specifying wich action to do, in this case lunch action on windows.
 - `/F (cmd.exe)` for lunch cmd.exe.
 - `/P (/C start powershell.exe -Command "echo 'hello, this windows will be close in 10sec...'; sleep 10"` is the parameters to give to cmd.exe
 - `This document is encrypted
 To view the encrypted content please tick the "Do not show this message again" box
-and press Open.` is for "hide" the previouses steps. (3lines and the victim will not see what we really do (unless if he scroll up)) 
+and press Open.` is for "hide" the previouses steps. (3lines and the victim will not see what we really do (unless if he scroll up))
 ### [!] Modify message popup will only work with adbe < 9.3.4
 
 ---
@@ -22,13 +22,15 @@ and press Open.` is for "hide" the previouses steps. (3lines and the victim will
 ## [2] claw_js-alert.pdf
 
 Using `/JS` will execute some javascript. Some commands are restricted.<br>
-But we can steal launch popup or send form. 
+But we can steal launch popup or send form.
 ###email functions:
 With adobe you have 4 functions for send emails:
 - `app.mailMsg()`    : This function sends an email message with no attachments.
 - `doc.mailForm()`   : This function sends the form data in fdp (Form Data Format) as a file attachment to the email. (dont work on adobe 9)
 - `doc.mailDoc()`    : This function sends the entire PDF file as an email attachment.
 - `doc.submitForm()` : This function can send form data in a variety of formats.
+
+[AcroJS API Reference](https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/js_api_reference.pdf)
 
 ---
 
