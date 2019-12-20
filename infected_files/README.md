@@ -2,6 +2,8 @@
 
 Open pdf in vim for inspect them...
 
+[Adobe security advisories](https://helpx.adobe.com/africa/security.html)
+
 ## [1] claw_powershell.pdf
 
 Run powershell command.. A warning will be prompt to the user.<br>
